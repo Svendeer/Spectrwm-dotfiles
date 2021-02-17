@@ -19,7 +19,7 @@ installRequeriments(){
 	echo "Instalando requerimentos previos..."
 	sleep 5
 
-	sudo pacman -S spectrwm xlockmore xterm pamixer light pcmanfm scrot rofi alacritty w3m feh git wmctrl lsd --needed --noconfirm
+	sudo pacman -S spectrwm xlockmore xterm pamixer light pcmanfm scrot rofi alacritty w3m feh git wmctrl lsd ueberzug vim picom zsh --needed --noconfirm
 }
 
 initialConfigs(){
@@ -87,15 +87,6 @@ setBashTheme(){
 	cd ..
 }
 
-additionalsProgramms(){
-	echo ""
-	echo "****************************************************************************************************************"
-	echo "Instalaremos programas adicionales: "
-	sudo pacman -S telegram-desktop zsh alsa-utils ueberzug picom neofetch vim --needed --noconfirm
-	#sudo systemctl enable lightdm.service
-	sleep 5
-}
-
 finish(){
 	clear && neofetch
 	sleep 5
@@ -111,5 +102,4 @@ setTerminals
 setRanger
 setVim
 setBashTheme
-additionalsProgramms
 finish
