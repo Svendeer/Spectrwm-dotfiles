@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Install my dotfiles for spectrwm
 
@@ -51,13 +52,12 @@ installFonts(){
 setTerminals(){
 	echo ""
 	echo "****************************************************************************************************************"
-	echo "Aplicaremos las configuraciones de las terminales, en este caso, ST y Alacritty."
+	echo "Aplicaremos las configuraciones de las terminales, en este caso, Alacritty."
 	sleep 5
 	cp .Xresources $HOME
 	sleep 2
+	mkdir -p $HOME/.config/alacritty
 	cp -rv alacritty/alacritty.yml $HOME/.config/alacritty
-	sleep 2
-	cd st-0.8.4 && make && sudo make clean install
 	sleep 2
 }
 
@@ -66,7 +66,6 @@ setRanger(){
 	echo "****************************************************************************************************************"
 	echo "Config para Ranger, esto necesita tener instalado w3m."
 	sleep 5
-	cd ..
 	cp -rv ranger ~/.config/
 }
 
@@ -81,11 +80,18 @@ setVim(){
 	sleep 2
 }
 
+setBashTheme(){
+	echo "Aplicando tema de bash, una modificación al de ParrotOS."
+	sleep 3
+	cp  -rv.bashrc $HOME/.bashrc
+	cd ..
+}
+
 additionalsProgramms(){
 	echo ""
 	echo "****************************************************************************************************************"
 	echo "Instalaremos programas adicionales: "
-	sudo pacman -S telegram-desktop zsh alsa-utils ueberzug picom neofetch firefox --needed --noconfirm
+	sudo pacman -S telegram-desktop zsh alsa-utils ueberzug picom neofetch vim --needed --noconfirm
 	#sudo systemctl enable lightdm.service
 	sleep 5
 }
@@ -104,5 +110,6 @@ installFonts
 setTerminals
 setRanger
 setVim
+setBashTheme
 additionalsProgramms
 finish
